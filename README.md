@@ -62,7 +62,7 @@ All content in this repository (except KDEF faces) is licensed under CC BY-NC-SA
 
 ## Notes
 - KDEF face stimuli are copyrighted and not included. Users must obtain them separately.  
-- Environmental images may be reused for academic and scientific purposes under CC-BY 4.0 with attribution.  
+- Environmental images may be reused for academic and scientific purposes under  CC BY-NC-SA 4.0 with attribution.  
 
 ##Reference
 1.	Lundqvist, D., Flykt, A., & Öhman, A. (1998). The Karolinska Directed Emotional Faces - KDEF, CD ROM from Department of Clinical Neuroscience, Psychology section, Karolinska Institutet, ISBN 91-630-7164-9.
