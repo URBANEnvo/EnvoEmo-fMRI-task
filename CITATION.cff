@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+title: "EnvoEmo Task"
+message: "If you use the EnvoEmo Task in your research, please cite this repository."
+type: software
+authors:
+  - family-names: "Lin"
+    given-names: "Yuchen"
+    affiliation: "Department of Psychiatry and Psychotherapy, Central Institute of Mental Health, Medical Faculty Mannheim, University of Heidelberg,  Germany"
+  - family-names: "Berhe"
+    given-names: "Oksana"
+    affiliation: "Department of Psychiatry and Psychotherapy, Central Institute of Mental Health, Medical Faculty Mannheim, University of Heidelberg,  Germany"
+  - family-names: "Andoh"
+    given-names: "Jamila"
+    affiliation: "Department of Psychiatry and Psychotherapy, Central Institute of Mental Health, Medical Faculty Mannheim, University of Heidelberg,  Germany"
+
+
+repository: "https://github.com/URBANEnvo/EnvoEmo-fMRI-task"
+version: "1.0.0"
+date-released: "2025-12-08"
+keywords:
+  - fMRI
+  - emotion processing
+  - environmental images
+  - Hariri task
+  - green space benefit
+license: "CC BY-NC-SA 4.0"
+
+
