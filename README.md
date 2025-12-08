@@ -44,7 +44,7 @@ The environmental images stimuli may NOT be redistributed in any way without wri
 
 
 ## Authors
-- ** Yuchen Lin**, Department of Psychiatry and Psychotherapy, Central Institute of Mental Health, Medical Faculty Mannheim, University of Heidelberg, Germany  
+- **Yuchen Lin**, Department of Psychiatry and Psychotherapy, Central Institute of Mental Health, Medical Faculty Mannheim, University of Heidelberg, Germany  
 - **Dr. Oksana Berhe**, Department of Psychiatry and Psychotherapy, Central Institute of Mental Health, Medical Faculty Mannheim, University of Heidelberg, Germany
 - **PD Dr. Jamila Andoh**, Department of Psychiatry and Psychotherapy, Central Institute of Mental Health, Medical Faculty Mannheim, University of Heidelberg, Germany
 - **Prof. Dr. Dr. Heike Tost**, Department of Psychiatry and Psychotherapy, Central Institute of Mental Health, Medical Faculty Mannheim, University of Heidelberg, Germany
