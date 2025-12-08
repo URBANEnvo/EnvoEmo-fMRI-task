@@ -4,7 +4,8 @@ The Environmental Emotion Processing Task (EnvoEmo Task) is a mixed-design fMRI 
 ## Overview
 The task includes four conditions defined by:
 - Environmental images: green spaces (GS) vs. built-up spaces (BS)
-- Facial images: negative: angry and fearful, and neutral facial expressions, including both female and male adapted from the Hariri emotional face-matching paradigm (1).  
+- Facial images: negative: angry and fearful, and neutral facial expressions, including both female and male from The Karolinska Directed Emotional Faces (KDEF) (1)
+- Adapted from the Hariri emotional face-matching paradigm (2).  
 
 ## Trial Structure
 Each trial consists of:
@@ -13,7 +14,7 @@ Each trial consists of:
 3. Brief face stimulus (200 ms)
 4. Long jitter with fixation (~5 s)
 
-Each block consists of 5 trials, and all four experimental conditions appear in a double-blind randomized order across 16 blocks.
+Each block consists of 5 trials, and all four experimental conditions appear in a randomized order across 16 blocks.
 
 All images are shown once per participant. Stimuli ordering and timing are implemented in Presentation® software (Neurobehavioral Systems).
 
@@ -23,7 +24,7 @@ After each condition, participants provide valence and arousal ratings using the
 
 ## Contents
 - `stimuli/environmental/`  
-  Folder with environmental images and a README explaining that environmental stimuli. 
+  A folder with environmental images and a README explaining the environmental stimuli. 
 
 - `stimuli/faces/`  
   Empty folder with a README explaining that face stimuli cannot be redistributed.
@@ -39,7 +40,7 @@ Facial stimuli (The Karolinska Directed Emotional Faces (KDEF)1) are not include
 Users must obtain the original KDEF stimuli from the appropriate copyright holders. https://kdef.se/faq/using-and-publishing-kdef-and-akdef
 
 The environmental images used in the task (GS and BS) are available upon request from the corresponding author. These images may be used exclusively for non-commercial scientific research purposes. Beyond this limitation, researchers are free to use the stimuli as needed.
-The Environmental images stimuli may NOT be redistributed in any way without written permission from the copyright holder (Central Institute of Mental Health, Department of Psychiatry and Psychotherapy).
+The environmental images stimuli may NOT be redistributed in any way without written permission from the copyright holder (Central Institute of Mental Health, Department of Psychiatry and Psychotherapy).
 
 
 ## Authors
@@ -65,3 +66,4 @@ All content in this repository (except KDEF faces) is licensed under CC BY-NC-SA
 
 ##Reference
 1.	Lundqvist, D., Flykt, A., & Öhman, A. (1998). The Karolinska Directed Emotional Faces - KDEF, CD ROM from Department of Clinical Neuroscience, Psychology section, Karolinska Institutet, ISBN 91-630-7164-9.
+2.	A. R. Hariri et al., Serotonin transporter genetic variation and the response of the human amygdala. Science 297, 400-403 (2002).
