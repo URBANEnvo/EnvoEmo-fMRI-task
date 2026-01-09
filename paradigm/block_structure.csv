@@ -1,0 +1,21 @@
+block,trial1_condition,trial2_condition,trial3_condition,trial4_condition,trial5_condition
+1,BS_Neutral,BS_Neutral,BS_Neutral,BS_Neutral,BS_Neutral
+2,BS_Negative,BS_Negative,BS_Negative,BS_Negative,BS_Negative
+3,GS_Negative,GS_Negative,GS_Negative,GS_Negative,GS_Negative
+4,GS_Neutral,GS_Neutral,GS_Neutral,GS_Neutral,GS_Neutral
+5,BS_Negative,BS_Negative,BS_Negative,BS_Negative,BS_Negative
+6,GS_Negative,GS_Negative,GS_Negative,GS_Negative,GS_Negative
+7,BS_Negative,BS_Negative,BS_Negative,BS_Negative,BS_Negative
+8,GS_Negative,GS_Negative,GS_Negative,GS_Negative,GS_Negative
+9,BS_Neutral,BS_Neutral,BS_Neutral,BS_Neutral,BS_Neutral
+10,BS_Negative,BS_Negative,BS_Negative,BS_Negative,BS_Negative
+11,BS_Neutral,BS_Neutral,BS_Neutral,BS_Neutral,BS_Neutral
+12,GS_Neutral,GS_Neutral,GS_Neutral,GS_Neutral,GS_Neutral
+13,GS_Negative,GS_Negative,GS_Negative,GS_Negative,GS_Negative
+14,GS_Neutral,GS_Neutral,GS_Neutral,GS_Neutral,GS_Neutral
+15,BS_Neutral,BS_Neutral,BS_Neutral,BS_Neutral,BS_Neutral
+16,GS_Neutral,GS_Neutral,GS_Neutral,GS_Neutral,GS_Neutral
+,,,,,
+,,,,,
+,,,,,
+The order of each block condition is randomized,,,,,
