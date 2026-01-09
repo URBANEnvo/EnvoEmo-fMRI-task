@@ -1,0 +1,354 @@
+preset string subject;
+string version="1";
+string last_string="x";
+
+
+int max = 100;
+array <string> fname[max];
+array <string> ecode[max];
+array <int> itime[max];
+array <int> resp[max];
+
+input_file img = new input_file;
+string EEimgorder=("EEimgorder"+version+".txt");
+img.open(EEimgorder);
+string ihdr = img.get_line();	# read image header
+
+loop
+   int i = 1;
+until
+   img.end_of_file() || !img.last_succeeded()
+begin
+   fname[i] = img.get_string();
+   ecode[i] = img.get_string();
+   itime[i] = img.get_int();
+   resp[i]  = img.get_int();
+   img.get_string();              # get the final ;
+   i = i + 1;
+end;
+img.close();
+
+if !img.last_succeeded() then
+  term.print( "Error reading EEimgorder"+version+".txt file\n" );
+end;
+
+# environment
+int emax = 100;
+array <string> fename[emax];
+array <string> eecode[emax];
+array <int> ietime[emax];
+
+input_file eimg = new input_file;
+string eimgorder=("eimgorder"+version+".txt");
+eimg.open(eimgorder);
+string eihdr = eimg.get_line();	# read image header
+
+loop
+   int i = 1;
+until
+   eimg.end_of_file() || !eimg.last_succeeded()
+begin
+   fename[i] = eimg.get_string();
+   eecode[i] = eimg.get_string();
+   ietime[i] = eimg.get_int();
+   # resp[i]  = eimg.get_int();
+   eimg.get_int();
+   eimg.get_string();              # get the final ;
+   i = i + 1;
+end;
+eimg.close();
+
+
+#############################
+# SAM
+
+int x = 1;
+int response_counter;
+int sam_time;
+#int R = 0;
+int P = 1;
+response_data last_response;
+output_file outfile = new output_file;
+#string printtext = "Print.";
+outfile.open(logfile.subject () + "_sam_readout.txt");
+
+# SAM arousal#
+sub
+	vas_arousal
+begin
+	#SAM_instruct_trial.present();
+	loop
+		int ivas = 1;
+	until
+		ivas == 2
+	begin
+		int j = 0;
+		int k = 0;
+		int l = 0;
+		
+		loop 
+			int i = 0;
+		until
+			i == 1
+		begin
+			vaspic.set_part_x(2, j);
+			vaspic.set_part(3,samarousal);
+         vas_present.present();
+			#last_response = response_manager.last_response_data ();
+	      if response_manager.response_count() > 0 then 
+            outfile.print("SAM_arousal" + "," + string( j ) + "\n");
+         if (response_manager.last_response() == 3 && j < 500) then 
+				j = j + 100
+			elseif (response_manager.last_response() == 2 && j > -500) then
+				j = j - 100
+			elseif (response_manager.last_response() == 1) then
+				i = 1 
+			else 
+				i = 0;
+			end;
+                #outfile.print(printtext + "\t" + string(response_manager.last_response ()) + "\n");
+		   else 
+            outfile.print ("\tno response\n");
+            j=-999;
+            i = 1;
+	      end;
+		end;
+		
+		event1.set_event_code ("SAM_arousal" + "," + string( j ));
+		save.present();
+		ivas = ivas + 1;
+	end;
+end;
+
+################# SUB valence #################
+sub
+	vas_valenz
+begin
+	cross_trial.present ();
+	loop
+		int ivas = 1;
+	until
+		ivas == 2
+	begin
+		int j = 0;
+		int k = 0;
+		int l = 0;
+		
+		loop 
+			int i = 0;
+		until
+			i == 1
+		begin
+			vaspic.set_part_x(2, j);
+			vaspic.set_part(3,samvalenz);
+         vas_present.present();
+	      if response_manager.response_count() > 0 then 
+            outfile.print("\t" + "SAM_valenz" + "," + string( j )+ "\n");
+         if (response_manager.last_response() == 3 && j < 500) then 
+				j = j + 100
+			elseif (response_manager.last_response() == 2 && j > -500) then
+				j = j - 100
+			elseif (response_manager.last_response() == 1) then
+				i = 1 
+			else 
+				i = 0;
+			end;
+		   else 
+            outfile.print ("\tno response\n");
+            j=-999;
+            i = 1;
+	      end;
+			
+		end;
+		
+		event1.set_event_code ("SAM_valenz" + "," + string( j ));
+		save.present();
+		ivas = ivas + 1;
+	end;
+end;
+
+
+##########################
+
+##########################
+# environment
+
+int tmax = 20;
+array <string> tname[tmax];
+array <string> tcode[tmax];
+array <int> ttime[tmax];
+
+input_file txt = new input_file;
+string textorder=("EEtxtorder"+version+".txt");
+txt.open(textorder);
+string thdr = txt.get_line();	# read text header
+
+
+loop
+   int i = 1;
+until
+   txt.end_of_file() || !txt.last_succeeded()
+begin
+   tname[i] = txt.get_string();
+   tcode[i] = txt.get_string();
+   ttime[i] = txt.get_int();
+   txt.get_string();              # get the final ;
+   i = i + 1;
+end;
+txt.close();
+
+if !txt.last_succeeded() then
+  term.print( "Error reading EEtxtorder"+version+".txt file\n" );
+end;
+
+
+instruct_trial.present();
+
+# randomization: conditions and pictures;
+
+int correct_task_time = clock.time();
+
+
+array <int> iblock[16] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+iblock.shuffle(1,16);
+array <int> iepic[80];
+array <int> ifpic[80];
+array <int> ipic[80];
+loop
+   int i = 1;
+until
+   i==81
+begin
+   iepic[i]=i;
+   ifpic[i]=i;
+   i = i + 1;
+end;
+iepic.shuffle(1,40);
+iepic.shuffle(41,80);
+ifpic.shuffle(1,40);
+ifpic.shuffle(41,80);
+
+
+loop
+   int i = 1;
+until
+   i==21
+begin
+   ipic[i]=ifpic[i];
+   i = i + 1;
+end;
+loop
+   int i = 21;
+until
+   i==41
+begin
+   ipic[i]=ifpic[i+20];
+   i = i + 1;
+end;
+loop
+   int i = 41;
+until
+   i==61
+begin
+   ipic[i]=ifpic[i-20];
+   i = i + 1;
+end;
+loop
+   int i = 61;
+until
+   i==81
+begin
+   ipic[i]=ifpic[i];
+   i = i + 1;
+end;
+
+term.print( ipic );
+term.print( iepic );
+term.print( iblock );
+
+
+loop
+   int i = 1;
+   
+until
+   tname[i] == ""   
+begin 
+   # environment
+   loop
+      int j = 1;
+      
+   until
+      j > 5  # 30s, 5s/pic
+   begin
+
+      int isi1 = random( 4000, 6000 ); #Fixationskreuze, jitter 5s
+      isi_trial.set_duration( isi1 );
+      isi_trial.present();
+      correct_task_time = clock.time();
+
+		if (version=="1") then    
+			stim_eimage.set_stimulus(epics1[iepic[j + (iblock[i]-1)*5]]);
+		elseif (version=="2") then
+		elseif (version=="3") then
+		elseif (version=="4") then
+		end;
+		
+      stim_eimage.set_event_code(eecode[iepic[j + (iblock[i]-1)*5]]);
+      stim_eimage.set_duration(5000 - (clock.time() - correct_task_time));
+      correct_task_time = correct_task_time + 5000;
+      eimage_trial.present();
+
+      int isi2 = random( 1000, 2000 ); #Fixationskreuze, jitter 1.5s
+      isi_trial.set_duration( isi2 );
+      isi_trial.present();
+      correct_task_time = clock.time();
+    
+		if (version=="1") then
+			    
+			stim_image.set_stimulus(pics1[ipic[j + (iblock[i]-1)*5]]);
+		elseif (version=="2") then
+			
+		elseif (version=="3") then
+			
+		elseif (version=="4") then
+			
+		end;
+		
+      stim_image.set_event_code(ecode[ipic[j + (iblock[i]-1)*5]]);
+  
+      
+      # attempt to keep better time accounting for delay of running pcl code
+      stim_image.set_duration( 200 - (clock.time() - correct_task_time));
+      correct_task_time = correct_task_time + 200;
+      image_trial.present();
+
+      j = j + 1;
+    end;
+   
+   vas_arousal();   
+   vas_valenz();
+   
+    #sam_time = clock.time () + 10000;
+    correct_task_time = clock.time();
+    
+
+    i = i + 1;
+
+      # jitter (fixation) after blocks, 5 sec
+      int isi3 = random( 4000, 6000 ); #Fixationskreuze, jitter 5s
+      isi_trial.set_duration( isi3 );
+      isi_trial.present();
+      #isi = clock.time () + 5000;
+      correct_task_time = clock.time();
+
+    #end
+    # rest end
+    
+
+
+
+
+
+end;
+
+end_trial.present();
